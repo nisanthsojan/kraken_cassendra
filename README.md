@@ -1,4 +1,1 @@
-ROF SOT
-===========
-
-ROF SOT Lite
+Sample code showing how to use cassendra with krakenjs
