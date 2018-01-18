@@ -1,8 +1,8 @@
 {
-    "name": "rof-sot",
+    "name": "so",
     "version": "0.1.0",
-    "description": "ROF SOT Lite",
-    "author": "Nisanth&lt;nisanth@radiusoffice.ie&gt;",
+    "description": "so",
+    "author": "Nisanth Sojan<nisanthsojan@yahoo.com>",
     "main": "index.js",
     "engines": {
         "node": ">=4.0.0"
