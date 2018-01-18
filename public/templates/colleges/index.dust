@@ -1,0 +1,10 @@
+{>"layouts/master" /}
+{<title}
+    {title} | {@pre type="content" key="title"/}
+{/title}
+{<body}
+<div class="column">
+    <h4 class="title is-4 has-text-centered">{@pre type="content" key="heading"/}</h4>
+    <a href="/colleges/add">add</a>
+</div>
+{/body}

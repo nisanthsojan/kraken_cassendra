@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{+title /}</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <h4 class="title is-4 has-text-centered">{@pre type="content" key="title"/}</h4>
+        </a>
+        <div class="navbar-burger burger" data-target="navbarDropDown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    {?user}
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="/colleges">{@pre type="content" key="navbar.colleges"/}</a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">{user.email}</a>
+                <div class="navbar-dropdown is-right">
+                    <a class="navbar-item {@eq key=activeRoute value="/profile"}is-active{/eq}" href="/profile">{@pre type="content" key="navbar.profile"/}</a>
+                    <a class="navbar-item" href="/settings">{@pre type="content" key="navbar.settings"/}</a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href="/logout">{@pre type="content" key="navbar.logout"/}</a>
+                </div>
+            </div>
+        </div>
+    {/user}
+</nav>
+    {#flashMessages}
+    <section class="section">
+        {?error}
+            <article class="message is-danger">
+                <div class="message-body">
+                    <ul>
+                        {#error}
+                            <li>{.}</li>
+                        {/error}
+                    </ul>
+                </div>
+            </article>
+        {/error}
+        {?success}
+            <article class="message is-success">
+                <div class="message-body">
+                    <ul>
+                        {#success}
+                            <li>{.}</li>
+                        {/success}
+                    </ul>
+                </div>
+            </article>
+        {/success}
+    </section>
+    {/flashMessages}
+<section class="section">
+    <div class="columns is-mobile is-centered">
+        {+body /}
+    </div>
+</section>
+
+<script type="text/javascript" data-main="/js/app" src="/components/requirejs/require.js"></script>
+</body>
+</html>

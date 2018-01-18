@@ -1,0 +1,169 @@
+{
+    "express": {
+        "view cache": false,
+        "view engine": "js",
+        "views": "path:./.build/templates"
+    },
+    "view engines": {
+        "js": {
+            "module": "makara",
+            "renderer": {
+                "method": "js",
+                "arguments": [
+                    {
+                        "cache": true,
+                        "helpers": "config:dust.helpers"
+                    }
+                ]
+            }
+        }
+    },
+    "dust": {
+        "helpers": [
+            "dustjs-helpers",
+            "dustjs-helpers-moment",
+            "dust-makara-helpers"
+        ]
+    },
+    "i18n": {
+        "contentPath": "path:./locales",
+        "fallback": "en-US"
+    },
+    "specialization": {
+    },
+    "middleware": {
+        "compress": {
+            "enabled": true,
+            "module": {
+                "name": "compression",
+                "arguments": [
+                    {
+                        "threshold": 512
+                    }
+                ]
+            }
+        },
+        "cookieParser": {
+            "module": {
+                "arguments": [
+                    "MMyBeMyBet*32hjterS3c1ect5Val8*32hjyBet32hj"
+                ]
+            }
+        },
+        "session": {
+            "module": {
+                "arguments": [
+                    {
+                        "secret": "MMyBeMyBet*32hjterS3c1ect5Val8*32hjyBet32hj",
+                        "cookie": {
+                            "path": "/",
+                            "httpOnly": true,
+                            "maxAge": null,
+                            "secure": false
+                        },
+                        "resave": true,
+                        "saveUninitialized": false,
+                        "proxy": null,
+                        "name": "sot",
+                        "unset": "destroy"
+                    }
+                ]
+            }
+        },
+        "static": {
+            "module": {
+                "arguments": [
+                    "path:./.build"
+                ]
+            }
+        },
+        "makara": {
+            "priority": 100,
+            "enabled": true,
+            "module": {
+                "name": "makara",
+                "arguments": [
+                    {
+                        "i18n": "config:i18n",
+                        "specialization": "config:specialization"
+                    }
+                ]
+            }
+        },
+        "router": {
+            "module": {
+                "arguments": [
+                    {
+                        "directory": "path:./controllers"
+                    }
+                ]
+            }
+        },
+        "flash": {
+            "priority": 91,
+            "enabled": true,
+            "module": {
+                "name": "connect-flash",
+                "method": "flash"
+            }
+        },
+        "isAuthenticated": {
+            "enabled": true,
+            "priority": 111,
+            "module": {
+                "name": "path:./lib/auth",
+                "method": "isAuthenticated"
+            }
+        },
+        "injectUser": {
+            "enabled": true,
+            "priority": 112,
+            "module": {
+                "name": "path:./lib/auth",
+                "method": "injectUser"
+            }
+        },
+        "outputFlash": {
+            "enabled": true,
+            "priority": 113,
+            "module": {
+                "name": "path:./lib/flash",
+                "method": "outputFlash"
+            }
+        },
+        "setActiveRoute": {
+            "enabled": true,
+            "priority": 114,
+            "module": {
+                "name": "path:./lib/set_active_nav",
+                "method": "setActiveRoute"
+            }
+        },
+        "setTitle": {
+            "enabled": true,
+            "priority": 115,
+            "module": {
+                "name": "path:./lib/middleware",
+                "method": "setTitle"
+            }
+        }
+    },
+    "server": {
+    },
+    "databaseConfig": {
+        "host": "",
+        "port": "",
+        "database": ""
+    },
+    "bcrypt": {
+        // http://security.stackexchange.com/questions/110084/parameters-for-pbkdf2-for-password-hashing
+        "hashBytes": 64,
+        "saltBytes": 16,
+        // sise of the salt : larger salt means hashed passwords are more resistant to rainbow table
+        "iterations": 500000,
+        // tune so that hashing the password takes about 1 second
+        "algo": "sha512",
+        "encoding": "base64"
+        // hex is readable but base64 is shorter
+    }
+}

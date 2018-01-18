@@ -1,0 +1,33 @@
+{>"layouts/master" /}
+{<title}
+    {title} | {@pre type="content" key="title"/}
+{/title}
+{<body}
+<div class="column">
+  <h4 class="title is-4 has-text-centered">{@pre type="content" key="heading"/}</h4>
+  <div class="section">
+      <article class="message is-danger">
+        <div class="message-header"><p><span class="icon"><i class="fa fa-exclamation-triangle"></i></span> {@pre type="content" key="account_delete.header"/}</p></div>
+        <div class="message-body">
+          <p class="field">{@pre type="content" key="account_delete.body"/}</p>
+          <form action="/profile/delete" method="post">
+            <div class="field">
+              <div class="control">
+                <input class="input" name="password" type="password" placeholder="{@pre type="content" key="account_delete.password_placeholder"/}">
+              </div>
+            </div>
+            <div class="field is-grouped">
+              <div class="control">
+                <input type="hidden" name="_csrf" value="{_csrf}"/>
+                <button class="button is-danger is-outlined" type="submit"><span class="icon"><i class="fa fa-trash"></i></span><span>{@pre type="content" key="account_delete.delete_link"/}</span></button>
+              </div>
+              <div class="control">
+                <a href="/profile" class="button is-text">{@pre type="content" key="button.cancel"/}</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </article>
+  </div>
+</div>
+{/body}
